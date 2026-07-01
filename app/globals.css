@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 15 23 42; /* slate-900 */
+  --foreground: 226 232 240; /* slate-200 */
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* Offset anchored sections so they aren't hidden under the sticky navbar. */
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-white text-slate-800 antialiased transition-colors duration-300;
+  }
+
+  .dark body {
+    @apply bg-slate-950 text-slate-200;
+  }
+
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  /* Visible, accessible focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent-500 ring-offset-2 ring-offset-white;
+  }
+  .dark :focus-visible {
+    @apply ring-offset-slate-950;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply mx-auto w-full max-w-6xl px-5 sm:px-8;
+  }
+
+  .section-heading {
+    @apply text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl dark:text-white;
+  }
+
+  .section-eyebrow {
+    @apply mb-3 inline-block text-sm font-semibold uppercase tracking-widest text-accent-600 dark:text-accent-400;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-sm font-medium text-slate-700 transition-colors dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-300;
+  }
+
+  .card {
+    @apply rounded-2xl border border-slate-200 bg-white shadow-sm transition-all duration-300 dark:border-slate-800 dark:bg-slate-900/60;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-accent-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-all hover:bg-accent-500 hover:shadow-md focus-visible:ring-2 focus-visible:ring-accent-400;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-transparent px-5 py-2.5 text-sm font-semibold text-slate-700 transition-all hover:border-accent-400 hover:text-accent-600 dark:border-slate-700 dark:text-slate-200 dark:hover:border-accent-500 dark:hover:text-accent-300;
+  }
+}
+
+/* Animated grid backdrop used in the hero. */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgba(99, 102, 241, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 0%, black 40%, transparent 100%);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-accent-500 via-accent-400 to-fuchsia-500 bg-clip-text text-transparent;
+  background-size: 200% auto;
+}
