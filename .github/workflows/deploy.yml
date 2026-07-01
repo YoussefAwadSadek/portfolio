@@ -35,7 +35,11 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        # npm install, not npm ci: the lock is generated on Windows and npm
+        # omits bundled deps of other platforms' optional packages from it
+        # (npm/cli bug), so npm ci on Linux rejects it with
+        # "Missing @emnapi/* from lock file". Versions stay pinned by the lock.
+        run: npm install --no-audit --no-fund
 
       - name: Setup GitHub Pages
         # enablement: true creates the Pages site automatically on first run,
