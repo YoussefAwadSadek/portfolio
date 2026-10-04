@@ -1,0 +1,49 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+/build
+
+# Production
+/dist
+
+# Misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
+.env
+.env*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Editor / OS
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# Local preview/screenshot scratch files (safe to delete)
+shot.py
+shot2.py
+shot_*.png
+sec_*.png
